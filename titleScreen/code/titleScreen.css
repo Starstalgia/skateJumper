@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+
+    font: 50pt "Comic Sans MS", Geneva, Arial, Helvetica, sans-serif;
+
+    font-weight: bold;
+
+    line-height: 20pt;
+
+}
+
+body{
+    background-image: url('https://images.squarespace-cdn.com/content/v1/548f6ec1e4b0ccccd2f1c61b/1524284080321-15846C4DSMWJPWV7IXAH/ke17ZwdGBToddI8pDm48kPoswlzjSVMM-SxOp7CV59BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI6FXy8c9PWtBlqAVlUS5izpdcIXDZqDYvprRqZ29Pw0o/skateboard.gif');
+    background-size: 1300px 750px;
+
+
+
+    height: 100vh;
+    padding:0;
+    margin:0;
+}
