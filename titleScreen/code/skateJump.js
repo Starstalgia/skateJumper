@@ -44,12 +44,15 @@ function control(e) {
 }
 
 function jump() {
-
+    eraseSkateboard()
     skateboardDown -= 50;
     drawSkateboard();
 
 }
 
+function eraseSkateboard() {
+    ctx.clearRect(skateboardRight,skateboardDown,100,25)
+}
 
 
 
