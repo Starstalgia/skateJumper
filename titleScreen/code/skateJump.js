@@ -5,8 +5,8 @@ var skateboardDown = 440;
 let baseline = 465;
 let maxHeight = 100;
 var img = document.getElementById("skateboard");
-let gravity = 2;
-
+let gravity = 1;
+setInterval(handleGravity, 20);
 function startGame() {
     drawGround();
    drawSkateboard();
@@ -35,7 +35,6 @@ function drawSkateboard() {
 
 
 
-
 function control(e) {
     if (e.keyCode === 32) {
         jump();
@@ -48,12 +47,19 @@ function jump() {
     skateboardDown -= 50;
     drawSkateboard();
 
+
 }
 
 function eraseSkateboard() {
     ctx.clearRect(skateboardRight,skateboardDown,100,25)
 }
-
+function handleGravity(){
+    if (skateboardDown<baseline) {
+        eraseSkateboard();
+        skateboardDown += 50
+        drawSkateboard();
+    }
+}
 
 
 // function generateObstacle() {
