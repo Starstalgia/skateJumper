@@ -6,7 +6,7 @@ let baseline = 465;
 let maxHeight = 100;
 let obstacleY = 435;
 let img = document.getElementById("skateboard");
-let gravity = 4;
+let gravity = 5;
 setInterval (handleTime, 20);
 document.addEventListener('keyup', control);
 
@@ -41,7 +41,7 @@ function control(e) {
 
 function jump() {
     eraseSkateboard();
-    skateboardDown -= 70;
+    skateboardDown -= 100;
     drawSkateboard();
 
 
