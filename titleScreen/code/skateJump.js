@@ -1,20 +1,19 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var skateboardRight = 35;
-var skateboardDown = 440;
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+let skateboardRight = 35;
+let skateboardDown = 440;
 let baseline = 465;
 let maxHeight = 100;
-var img = document.getElementById("skateboard");
-let gravity = 1;
-setInterval(handleGravity, 20);
+let obstacleY = 435;
+let img = document.getElementById("skateboard");
+let gravity = 4;
+setInterval (handleTime, 20);
+document.addEventListener('keyup', control);
+
 function startGame() {
     drawGround();
-   drawSkateboard();
-    document.addEventListener('keyup', control);
-    setInterval(handleSkateboard, 20);
-}
-function handleSkateboard(){
-
+    drawSkateboard();
+    drawObstacle();
 }
 
 function drawGround() {
@@ -33,8 +32,6 @@ function drawSkateboard() {
 }
 
 
-
-
 function control(e) {
     if (e.keyCode === 32) {
         jump();
@@ -43,32 +40,44 @@ function control(e) {
 }
 
 function jump() {
-    eraseSkateboard()
-    skateboardDown -= 50;
+    eraseSkateboard();
+    skateboardDown -= 70;
     drawSkateboard();
 
 
 }
 
 function eraseSkateboard() {
-    ctx.clearRect(skateboardRight,skateboardDown,100,25)
+    ctx.clearRect(skateboardRight, skateboardDown, 100, 25)
 }
-function handleGravity(){
-    if (skateboardDown<baseline) {
+
+function handleTime() {
+    if (skateboardDown < baseline - 30) {
         eraseSkateboard();
-        skateboardDown += 50
+        skateboardDown += gravity;
         drawSkateboard();
     }
+    if (obstacleY > -20) {
+        drawObstacle(false);
+        obstacleY -= 10;
+        drawObstacle(true);
+
+    }
+    else {drawObstacle(false);
+
+    }
+
+}
+
+function drawObstacle(draw = true) {
+    if (draw) {
+        ctx.fillStyle = "black";
+    } else {
+        ctx.fillStyle = "white";
+    }
+    ctx.beginPath();
+    ctx.fillRect(obstacleY, 434, 30, 30);
+    ctx.stroke();
 }
 
 
-// function generateObstacle() {
-//    const obstacle = document.createElement('div');
-//     obstacle.classList.add('obstacle');
-//     gameDisplay.appendChild(obstacle);
-//
-// }
-// generateObstacle()
-
-// console.log ()
-// if (skateboardDown < maxHeight) skateboardDown -=50
