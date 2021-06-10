@@ -4,8 +4,9 @@ let skateboardRight = 35;
 let skateboardDown = 440;
 let baseline = 465;
 let maxHeight = 100;
-let obstacleX = randBetween(400,300)
-let obstacleY= 435;
+let obstacleX;
+let obstacleY;
+newBlock();
 let img = document.getElementById("skateboard");
 let gravity = 5;
 setInterval (handleTime, 20);
@@ -15,6 +16,7 @@ function startGame() {
     drawGround();
     drawSkateboard();
     drawObstacle();
+    newBlock();
 }
 
 function drawGround() {
@@ -68,11 +70,9 @@ function handleTime() {
     else {drawObstacle(false);
 
     }
-    if (randBetween(50,1000)>995){
-    newBlock();
-    }
 
 }
+
 
 function drawObstacle(draw = true) {
     if (draw) {
@@ -91,6 +91,7 @@ function randBetween(min,max) {
 }
 
 function newBlock() {
-     obstacleX = randBetween(400,434)
+     obstacleX = randBetween(400,300)
      obstacleY= 435;
+     setTimeout(newBlock,randBetween(800,2000));
 }
