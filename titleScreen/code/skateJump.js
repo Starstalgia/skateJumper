@@ -4,7 +4,8 @@ let skateboardRight = 35;
 let skateboardDown = 440;
 let baseline = 465;
 let maxHeight = 100;
-let obstacleY = 435;
+let obstacleX = randBetween(400,434)
+let obstacleY= 435;
 let img = document.getElementById("skateboard");
 let gravity = 5;
 setInterval (handleTime, 20);
@@ -57,6 +58,7 @@ function handleTime() {
         skateboardDown += gravity;
         drawSkateboard();
     }
+
     if (obstacleY > -20) {
         drawObstacle(false);
         obstacleY -= 10;
@@ -76,8 +78,12 @@ function drawObstacle(draw = true) {
         ctx.fillStyle = "white";
     }
     ctx.beginPath();
-    ctx.fillRect(obstacleY, 434, 30, 30);
+    ctx.fillRect(obstacleY, obstacleX, 30, 30);
     ctx.stroke();
 }
 
+
+function randBetween(min,max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
